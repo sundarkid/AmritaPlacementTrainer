@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.amritaplacementtrainer"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/col"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.amritaplacementtrainer.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Signup"
+            android:label="@string/title_activity_signup" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Loginsuccess"
+            android:label="@string/title_activity_loginsuccess" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Signupsuccess"
+            android:label="@string/title_activity_signupsuccess" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Aptitudesections"
+            android:label="@string/title_activity_aptitudesections" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Aptitudeselect"
+            android:label="@string/title_activity_aptitudeselect" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Aptiprac"
+            android:label="@string/title_activity_aptiprac" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Aptimain"
+            android:label="@string/title_activity_aptimain" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Verbselect"
+            android:label="@string/title_activity_verbselect" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Techselect"
+            android:label="@string/title_activity_techselect" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Verbprac"
+            android:label="@string/title_activity_verbprac" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Verbmain"
+            android:label="@string/title_activity_verbmain" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Techprac"
+            android:label="@string/title_activity_techprac" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Techmain"
+            android:label="@string/title_activity_techmain" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Maintest"
+            android:label="@string/title_activity_maintest" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Practicetest"
+            android:label="@string/title_activity_practicetest" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.ForgotPassword"
+            android:label="@string/title_activity_forgot_password" >
+        </activity>
+        <activity
+            android:name="com.example.amritaplacementtrainer.Practicedisplay"
+            android:label="@string/title_activity_practicedisplay" >
+        </activity>
+    </application>
+
+</manifest>

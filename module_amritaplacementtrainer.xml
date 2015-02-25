@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_amritaplacementtrainer" default="compile.module.amritaplacementtrainer">
+  <dirname property="module.amritaplacementtrainer.basedir" file="${ant.file.module_amritaplacementtrainer}"/>
+  
+  <property name="module.jdk.home.amritaplacementtrainer" value="${jdk.home.android_api_17_platform}"/>
+  <property name="module.jdk.bin.amritaplacementtrainer" value="${jdk.bin.android_api_17_platform}"/>
+  <property name="module.jdk.classpath.amritaplacementtrainer" value="jdk.classpath.android_api_17_platform"/>
+  
+  <property name="compiler.args.amritaplacementtrainer" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="amritaplacementtrainer.output.dir" value="${module.amritaplacementtrainer.basedir}/../out/production/AmritaPlacementTrainer"/>
+  <property name="amritaplacementtrainer.testoutput.dir" value="${module.amritaplacementtrainer.basedir}/../out/test/AmritaPlacementTrainer"/>
+  
+  <path id="amritaplacementtrainer.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="amritaplacementtrainer.module.production.classpath">
+    <path refid="${module.jdk.classpath.amritaplacementtrainer}"/>
+  </path>
+  
+  <path id="amritaplacementtrainer.runtime.production.module.classpath">
+    <pathelement location="${amritaplacementtrainer.output.dir}"/>
+  </path>
+  
+  <path id="amritaplacementtrainer.module.classpath">
+    <path refid="${module.jdk.classpath.amritaplacementtrainer}"/>
+    <pathelement location="${amritaplacementtrainer.output.dir}"/>
+  </path>
+  
+  <path id="amritaplacementtrainer.runtime.module.classpath">
+    <pathelement location="${amritaplacementtrainer.testoutput.dir}"/>
+    <pathelement location="${amritaplacementtrainer.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.amritaplacementtrainer">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.amritaplacementtrainer">
+    <patternset refid="excluded.from.module.amritaplacementtrainer"/>
+  </patternset>
+  
+  <path id="amritaplacementtrainer.module.sourcepath">
+    <dirset dir="${module.amritaplacementtrainer.basedir}">
+      <include name="gen"/>
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.amritaplacementtrainer" depends="compile.module.amritaplacementtrainer.production,compile.module.amritaplacementtrainer.tests" description="Compile module AmritaPlacementTrainer"/>
+  
+  <target name="compile.module.amritaplacementtrainer.production" depends="register.custom.compilers" description="Compile module AmritaPlacementTrainer; production classes">
+    <mkdir dir="${amritaplacementtrainer.output.dir}"/>
+    <javac2 destdir="${amritaplacementtrainer.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.amritaplacementtrainer}/javac">
+      <compilerarg line="${compiler.args.amritaplacementtrainer}"/>
+      <bootclasspath refid="amritaplacementtrainer.module.bootclasspath"/>
+      <classpath refid="amritaplacementtrainer.module.production.classpath"/>
+      <src refid="amritaplacementtrainer.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.amritaplacementtrainer"/>
+    </javac2>
+    
+    <copy todir="${amritaplacementtrainer.output.dir}">
+      <fileset dir="${module.amritaplacementtrainer.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.amritaplacementtrainer.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.amritaplacementtrainer.tests" depends="register.custom.compilers,compile.module.amritaplacementtrainer.production" description="compile module AmritaPlacementTrainer; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.amritaplacementtrainer" description="cleanup module">
+    <delete dir="${amritaplacementtrainer.output.dir}"/>
+    <delete dir="${amritaplacementtrainer.testoutput.dir}"/>
+  </target>
+</project>
