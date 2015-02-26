@@ -22,6 +22,9 @@ public class LoginActivity extends Activity {
 			Button messageButton2=(Button)findViewById(R.id.login1);
 		messageButton2.setOnClickListener(new View.OnClickListener(){
 			public void onClick(View arg0){
+
+
+
 				startActivity(new Intent(LoginActivity.this,Loginsuccess.class));
 			}
 			});
@@ -36,7 +39,9 @@ public class LoginActivity extends Activity {
 
 		});
 	}
-	
+
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
