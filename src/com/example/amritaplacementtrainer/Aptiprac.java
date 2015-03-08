@@ -2,7 +2,6 @@ package com.example.amritaplacementtrainer;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 
 public class Aptiprac extends Activity {
 
@@ -12,11 +11,5 @@ public class Aptiprac extends Activity {
 		setContentView(R.layout.activity_aptiprac);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.aptiprac, menu);
-		return true;
-	}
 
 }
