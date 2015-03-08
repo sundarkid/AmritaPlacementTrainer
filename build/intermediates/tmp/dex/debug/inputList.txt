@@ -1,2 +1,2 @@
-C:\Users\Sundareswaran\Desktop\timetable\AmritaPlacementTrainer\AmritaPlacementTrainer\build\intermediates\classes\debug
-C:\Users\Sundareswaran\Desktop\timetable\AmritaPlacementTrainer\AmritaPlacementTrainer\build\intermediates\pre-dexed\debug\android-support-v4-8c35d5b77428515b3542b0418a967af37b44e0ce.jar
+C:\Users\Sundareswaran\AmritaPlacementTrainer\build\intermediates\classes\debug
+C:\Users\Sundareswaran\AmritaPlacementTrainer\build\intermediates\pre-dexed\debug\android-support-v4-cec299d0b87a0fc7e5f1e3793067aa93f3e5db53.jar

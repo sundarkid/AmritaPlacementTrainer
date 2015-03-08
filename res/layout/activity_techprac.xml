@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/c1"
+            android:onClick="clicking"
             android:background="#0182B3"
             android:textColor="#ffffff" />
 
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="@string/c4"
             android:layout_marginTop="10dp"
+            android:onClick="clicking"
             android:background="#0182B3"
             android:textColor="#ffffff"/>
 
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/c3"
             android:background="#0182B3"
+            android:onClick="clicking"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
 
@@ -50,6 +53,7 @@
             android:layout_height="wrap_content"
             android:text="@string/c6"
             android:background="#0182B3"
+            android:onClick="clicking"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
 
@@ -59,6 +63,7 @@
             android:layout_height="wrap_content"
             android:text="@string/c5"
             android:background="#0182B3"
+            android:onClick="clicking"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
 
@@ -68,6 +73,7 @@
             android:layout_height="wrap_content"
             android:text="@string/c2"
             android:background="#0182B3"
+            android:onClick="clicking"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
 
@@ -77,6 +83,7 @@
             android:layout_height="wrap_content"
             android:text="@string/c7"
             android:background="#0182B3"
+            android:onClick="clicking"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff" />
 
@@ -85,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#0182B3"
+            android:onClick="clicking"
             android:layout_marginTop="10dp"
             android:text="@string/c8"
             android:textColor="#ffffff" />
