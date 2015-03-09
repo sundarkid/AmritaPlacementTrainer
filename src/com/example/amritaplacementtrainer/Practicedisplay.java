@@ -3,7 +3,6 @@ package com.example.amritaplacementtrainer;
 
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -153,7 +152,7 @@ public class Practicedisplay extends Activity {
         try {
             Log.d("Inside json decode","");
             /****** Creates a new JSONObject with name/value mappings from the JSON string. ********/
-        if(Content.equals("")) {
+        if(!Content.equals("")) {
             JSONObject jsonResponse = new JSONObject(Content);
             /***** Returns the value mapped by name if it exists and is a JSONArray. ***/
             /*******  Returns null otherwise.  *******/

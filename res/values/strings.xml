@@ -75,7 +75,8 @@
     <string name="c6">Software Engineering</string>
     <string name="c7">Computer Architecture</string>
     <string name="c8">Algorithms</string>
-    <string name="c9">SYNONYMS AND ANTONYMS</string>
+    <string name="c9">SYNONYMS</string>
+    <string name="c10">ANTONYMS</string>
     <string name="c11">SYLLOGISMS</string>
     <string name="c12">READING COMPREHENSION</string>
     <string name="c13">ERROR SPOTTING</string>

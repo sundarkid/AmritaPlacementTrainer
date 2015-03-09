@@ -16,7 +16,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/buttons"
+        android:onClick="clicking"
         android:text="@string/c9"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/antynoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/buttons"
+        android:onClick="clicking"
+        android:text="@string/c10"
         android:textColor="@color/white" />
 
     <Button
@@ -25,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/buttons"
+        android:onClick="clicking"
         android:text="@string/c11"
         android:textColor="@color/white" />
 
@@ -34,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/buttons"
+        android:onClick="clicking"
         android:text="@string/c12"
         android:textColor="@color/white" />
 
@@ -43,15 +56,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/buttons"
+        android:onClick="clicking"
         android:text="@string/c13"
         android:textColor="@color/white" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:background="@color/buttons"
+        android:onClick="clicking"
         android:text="@string/c15"
         android:textColor="@color/white" />
 
@@ -61,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/buttons"
+        android:onClick="clicking"
         android:text="@string/c17"
         android:textColor="@color/white" />
 
