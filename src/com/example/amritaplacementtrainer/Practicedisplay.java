@@ -3,6 +3,7 @@ package com.example.amritaplacementtrainer;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -13,8 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.amritaplacementtrainer.dataClass.Question;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -39,9 +38,10 @@ public class Practicedisplay extends Activity {
 	Button btnNext;
 	RadioGroup rg;
 	RadioButton rb0,rb1,rb2,rb3;
-	int flag=1;
     Question ques[];
+    AnswerQuestion aq;
     String Content,Subject;
+    ArrayList<AnswerQuestion> answerQuestionArrayList;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,7 +56,9 @@ public class Practicedisplay extends Activity {
 	        rb1=(RadioButton)findViewById(R.id.radio1);
 	        rb2=(RadioButton) findViewById(R.id.radio2);
 	        rb3= (RadioButton) findViewById(R.id.radio3);
-	        
+
+            answerQuestionArrayList = new ArrayList<AnswerQuestion>();
+
 	    new LongOperation().execute("http://amritaplacementtrainer.comlu.com/questions.php");
 
 	        setupmessagebutton();
@@ -67,8 +69,16 @@ public class Practicedisplay extends Activity {
             Button messageButton5=(Button)findViewById(R.id.btn);
             messageButton5.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View arg0){
-                    if(flag < ques.length)
+                    aq = new AnswerQuestion();
+                    if(!((RadioButton)findViewById(rg.getCheckedRadioButtonId())).equals(null))
+                        aq.answer = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+                    else
+                        aq.answer = "";
+                    aq.id = ques[i-1].id;
+                    answerQuestionArrayList.add(aq);
+                    if(i < ques.length)
                     {
+
                         tv1.setText(ques[i].que);
                         rb0.setText(ques[i].opt[0]);
                         rb1.setText(ques[i].opt[1]);
@@ -78,9 +88,11 @@ public class Practicedisplay extends Activity {
                     else {
                         Toast.makeText(Practicedisplay.this,"Test is complete.",Toast.LENGTH_SHORT).show();
                         //TODO send answers to the server
-                        finish();
+                        JSONArray jsonArray = new JSONArray();
+                        for (int i = 0; i < answerQuestionArrayList.size(); i++)
+                            jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
+                        new sendDataToServer().execute("http://amritaplacementtrainer.comlu.com/marks.php",jsonArray.toString());
                     }
-                    flag++;
                     i++;
                 }
             });
@@ -109,7 +121,7 @@ public class Practicedisplay extends Activity {
                 // Call long running operations here (perform background computation)
                 // NOTE: Don't call UI Element here.
 
-                // Server url call by GET method
+                // Server url call by Post method
                 HttpPost httpPost = new HttpPost(urls[0]);
                 List<NameValuePair> postData = new ArrayList<NameValuePair>(1);
                 postData.add(new BasicNameValuePair("subject",Subject));
@@ -142,6 +154,7 @@ public class Practicedisplay extends Activity {
             rb1.setText(ques[0].opt[1]);
             rb2.setText(ques[0].opt[2]);
             rb3.setText(ques[0].opt[3]);
+
         }
 
 
@@ -198,6 +211,57 @@ public class Practicedisplay extends Activity {
         }
 
 
+    }
+
+    private class sendDataToServer extends AsyncTask<String,Void,Void>{
+
+        private final HttpClient Client = new DefaultHttpClient();
+        private String Error = null;
+        private ProgressDialog Dialog = new ProgressDialog(Practicedisplay.this);
+        String marks;
+
+        protected void onPreExecute() {
+            Dialog.setMessage("Checking answer...");
+            Dialog.show();
+        }
+
+        protected Void doInBackground(String... params) {
+
+            try {
+
+                // Call long running operations here (perform background computation)
+                // NOTE: Don't call UI Element here.
+
+                // Server url call by Post method
+                HttpPost httpPost = new HttpPost(params[0]);
+                List<NameValuePair> postData = new ArrayList<NameValuePair>(1);
+                postData.add(new BasicNameValuePair("answers",params[1]));
+                httpPost.setEntity(new UrlEncodedFormEntity(postData));
+                HttpResponse response = Client.execute(httpPost);
+                marks = EntityUtils.toString(response.getEntity());
+                if (marks.equals(null))
+                    marks = "something wrong";
+                Log.d("marks", marks);
+                // Decoding the json data
+
+
+            } catch (ClientProtocolException e) {
+                Error = e.getMessage();
+                cancel(true);
+            } catch (IOException e) {
+                Error = e.getMessage();
+                cancel(true);
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(Void aVoid) {
+            Dialog.dismiss();
+            Intent intent = new Intent(Practicedisplay.this,TestResult.class);
+            intent.putExtra("mark",marks);
+            startActivity(intent);
+        }
     }
 
 }

@@ -27,11 +27,11 @@ public final class R {
         public static final int logo1=0x7f020004;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f090029;
-        public static final int action_settings=0x7f09002e;
-        public static final int antynoms=0x7f09002b;
-        public static final int apti=0x7f090016;
-        public static final int btn=0x7f090021;
+        public static final int RelativeLayout1=0x7f09002a;
+        public static final int action_settings=0x7f090032;
+        public static final int antynoms=0x7f09002f;
+        public static final int apti=0x7f090017;
+        public static final int btn=0x7f090022;
         public static final int button10=0x7f09000b;
         public static final int button11=0x7f090008;
         public static final int button12=0x7f09000a;
@@ -43,37 +43,41 @@ public final class R {
         public static final int button7=0x7f090000;
         public static final int button8=0x7f090006;
         public static final int button9=0x7f090009;
+        public static final int buttonGoHome=0x7f09002e;
+        public static final int editPassword=0x7f090013;
         public static final int editUsername=0x7f090012;
-        public static final int emailaddress=0x7f090022;
-        public static final int forgotpassword=0x7f090014;
-        public static final int login=0x7f090019;
-        public static final int login1=0x7f090013;
+        public static final int emailaddress=0x7f090023;
+        public static final int forgotpassword=0x7f090015;
+        public static final int login=0x7f09001a;
+        public static final int login1=0x7f090014;
         public static final int maintest=0x7f09000c;
         public static final int name=0x7f09000f;
-        public static final int passnew=0x7f090026;
-        public static final int phonenumber=0x7f090024;
+        public static final int passnew=0x7f090027;
+        public static final int phonenumber=0x7f090025;
         public static final int prac=0x7f09000d;
-        public static final int radio0=0x7f09001d;
-        public static final int radio1=0x7f09001e;
-        public static final int radio2=0x7f09001f;
-        public static final int radio3=0x7f090020;
-        public static final int radioGroup1=0x7f09001c;
+        public static final int radio0=0x7f09001e;
+        public static final int radio1=0x7f09001f;
+        public static final int radio2=0x7f090020;
+        public static final int radio3=0x7f090021;
+        public static final int radioGroup1=0x7f09001d;
         public static final int register=0x7f090011;
-        public static final int reset=0x7f090028;
+        public static final int reset=0x7f090029;
         public static final int retrievepass=0x7f090001;
-        public static final int signup=0x7f09001a;
-        public static final int signup_login=0x7f090027;
-        public static final int technical=0x7f090017;
-        public static final int techprac=0x7f09002a;
+        public static final int signup=0x7f09001b;
+        public static final int signup_login=0x7f090028;
+        public static final int technical=0x7f090018;
+        public static final int techprac=0x7f09002b;
+        public static final int textView=0x7f09002c;
         public static final int textView1=0x7f09000e;
         public static final int textView2=0x7f090010;
-        public static final int textView3=0x7f090018;
-        public static final int textView4=0x7f090023;
-        public static final int textView6=0x7f090025;
-        public static final int tv=0x7f09001b;
-        public static final int verbal=0x7f090015;
-        public static final int verbalmain=0x7f09002c;
-        public static final int verbalp=0x7f09002d;
+        public static final int textView3=0x7f090019;
+        public static final int textView4=0x7f090024;
+        public static final int textView6=0x7f090026;
+        public static final int textViewMark=0x7f09002d;
+        public static final int tv=0x7f09001c;
+        public static final int verbal=0x7f090016;
+        public static final int verbalmain=0x7f090030;
+        public static final int verbalp=0x7f090031;
     }
     public static final class layout {
         public static final int activity_aptimain=0x7f030000;
@@ -91,9 +95,10 @@ public final class R {
         public static final int activity_techmain=0x7f03000c;
         public static final int activity_techprac=0x7f03000d;
         public static final int activity_techselect=0x7f03000e;
-        public static final int activity_verbmain=0x7f03000f;
-        public static final int activity_verbprac=0x7f030010;
-        public static final int activity_verbselect=0x7f030011;
+        public static final int activity_test_result=0x7f03000f;
+        public static final int activity_verbmain=0x7f030010;
+        public static final int activity_verbprac=0x7f030011;
+        public static final int activity_verbselect=0x7f030012;
     }
     public static final class menu {
         public static final int aptimain=0x7f080000;
@@ -105,15 +110,16 @@ public final class R {
         public static final int loginsuccess=0x7f080006;
         public static final int main=0x7f080007;
         public static final int maintest=0x7f080008;
-        public static final int practicedisplay=0x7f080009;
-        public static final int practicetest=0x7f08000a;
-        public static final int signupsuccess=0x7f08000b;
-        public static final int techmain=0x7f08000c;
-        public static final int techprac=0x7f08000d;
-        public static final int techselect=0x7f08000e;
-        public static final int verbmain=0x7f08000f;
-        public static final int verbprac=0x7f080010;
-        public static final int verbselect=0x7f080011;
+        public static final int menu_test_result=0x7f080009;
+        public static final int practicedisplay=0x7f08000a;
+        public static final int practicetest=0x7f08000b;
+        public static final int signupsuccess=0x7f08000c;
+        public static final int techmain=0x7f08000d;
+        public static final int techprac=0x7f08000e;
+        public static final int techselect=0x7f08000f;
+        public static final int verbmain=0x7f080010;
+        public static final int verbprac=0x7f080011;
+        public static final int verbselect=0x7f080012;
     }
     public static final class string {
         public static final int B1=0x7f060000;
@@ -217,15 +223,16 @@ public final class R {
         public static final int title_activity_techmain=0x7f060062;
         public static final int title_activity_techprac=0x7f060063;
         public static final int title_activity_techselect=0x7f060064;
-        public static final int title_activity_verbmain=0x7f060065;
-        public static final int title_activity_verbprac=0x7f060066;
-        public static final int title_activity_verbselect=0x7f060067;
-        public static final int v=0x7f060068;
-        public static final int we=0x7f060069;
-        public static final int xc=0x7f06006a;
-        public static final int xv=0x7f06006b;
-        public static final int zb=0x7f06006c;
-        public static final int zxc=0x7f06006d;
+        public static final int title_activity_test_result=0x7f060065;
+        public static final int title_activity_verbmain=0x7f060066;
+        public static final int title_activity_verbprac=0x7f060067;
+        public static final int title_activity_verbselect=0x7f060068;
+        public static final int v=0x7f060069;
+        public static final int we=0x7f06006a;
+        public static final int xc=0x7f06006b;
+        public static final int xv=0x7f06006c;
+        public static final int zb=0x7f06006d;
+        public static final int zxc=0x7f06006e;
     }
     public static final class style {
         /** 

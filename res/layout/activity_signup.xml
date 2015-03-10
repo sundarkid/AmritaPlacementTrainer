@@ -78,8 +78,7 @@
             android:background="#ffffff"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="@string/i1"
-            android:textColor="#ffffff" />
+            android:text="@string/i1" />
 
     </TableRow>
 
