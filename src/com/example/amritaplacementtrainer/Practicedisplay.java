@@ -101,6 +101,7 @@ public class Practicedisplay extends Activity {
                             jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
                         new sendDataToServer().execute("http://amritaplacementtrainer.comlu.com/marks.php",jsonArray.toString());
                     }
+
                     i++;
                 }
             });
