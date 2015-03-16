@@ -19,7 +19,7 @@ public class Aptitudeselect extends Activity {
 		Button messageButton11=(Button)findViewById(R.id.prac);
 	messageButton11.setOnClickListener(new View.OnClickListener(){
 public void onClick(View arg0){
-			startActivity(new Intent(Aptitudeselect.this,Practicedisplay.class));
+			startActivity(new Intent(Aptitudeselect.this,Aptiprac.class));
 		}
 
 	});

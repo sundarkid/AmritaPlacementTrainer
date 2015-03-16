@@ -42,6 +42,7 @@ public class Practicedisplay extends Activity {
     AnswerQuestion aq;
     String Content,Subject;
     ArrayList<AnswerQuestion> answerQuestionArrayList;
+    HttpResponse httpResponse;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,9 +70,16 @@ public class Practicedisplay extends Activity {
             Button messageButton5=(Button)findViewById(R.id.btn);
             messageButton5.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View arg0){
+                    RadioButton rd;
+                    rg.clearCheck();
+                    rd = new RadioButton(Practicedisplay.this);
                     aq = new AnswerQuestion();
-                    if(!((RadioButton)findViewById(rg.getCheckedRadioButtonId())).equals(null))
-                        aq.answer = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+                    if (rg.getCheckedRadioButtonId() != -1){
+                        rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+                    }
+
+                    if(!rd.equals(null))
+                        aq.answer = rd.getText().toString();
                     else
                         aq.answer = "";
                     aq.id = ques[i-1].id;
@@ -87,7 +95,7 @@ public class Practicedisplay extends Activity {
                     }
                     else {
                         Toast.makeText(Practicedisplay.this,"Test is complete.",Toast.LENGTH_SHORT).show();
-                        //TODO send answers to the server
+                        //TODO get result for test
                         JSONArray jsonArray = new JSONArray();
                         for (int i = 0; i < answerQuestionArrayList.size(); i++)
                             jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
@@ -238,9 +246,10 @@ public class Practicedisplay extends Activity {
                 postData.add(new BasicNameValuePair("answers",params[1]));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
+                httpResponse = response;
                 marks = EntityUtils.toString(response.getEntity());
-                if (marks.equals(null))
-                    marks = "something wrong";
+              //  if (marks.equals(null))
+                //    marks = "something wrong";
                 Log.d("marks", marks);
                 // Decoding the json data
 
@@ -257,10 +266,13 @@ public class Practicedisplay extends Activity {
         }
 
         protected void onPostExecute(Void aVoid) {
-            Dialog.dismiss();
+            //Dialog.dismiss();
             Intent intent = new Intent(Practicedisplay.this,TestResult.class);
+           // marks = "<html>" + marks +"</html>";
+            Object o = httpResponse;
             intent.putExtra("mark",marks);
             startActivity(intent);
+            finish();
         }
     }
 

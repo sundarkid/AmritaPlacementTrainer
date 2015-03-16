@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.apache.http.protocol.HTTP;
 
 
 public class TestResult extends Activity {
@@ -15,7 +18,7 @@ public class TestResult extends Activity {
     String mark;
     TextView marks;
     Button goHome;
-
+    WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +27,17 @@ public class TestResult extends Activity {
         mark = extras.getString("mark");
 
         marks = (TextView) findViewById(R.id.textViewMark);
-        marks.setText(mark);
+        webView = (WebView) findViewById(R.id.webView);
+       // marks.setText(mark);
         goHome = (Button) findViewById(R.id.buttonGoHome);
 
+        webView.loadData(mark,"text/htm", "UTF-8");
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TestResult.this,Loginsuccess.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
