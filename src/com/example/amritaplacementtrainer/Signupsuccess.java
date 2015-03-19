@@ -20,6 +20,7 @@ public class Signupsuccess extends Activity {
 	messageButton4.setOnClickListener(new View.OnClickListener(){
 		public void onClick(View arg0){
 			startActivity(new Intent(Signupsuccess.this,LoginActivity.class));
+            finish();
 		}
 
 	});

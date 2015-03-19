@@ -18,7 +18,6 @@ public class TestResult extends Activity {
     String mark;
     TextView marks;
     Button goHome;
-    WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +26,9 @@ public class TestResult extends Activity {
         mark = extras.getString("mark");
 
         marks = (TextView) findViewById(R.id.textViewMark);
-        webView = (WebView) findViewById(R.id.webView);
-       // marks.setText(mark);
+        marks.setText(mark);
         goHome = (Button) findViewById(R.id.buttonGoHome);
 
-        webView.loadData(mark,"text/htm", "UTF-8");
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

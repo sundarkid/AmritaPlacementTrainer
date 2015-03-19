@@ -71,15 +71,13 @@ public class Practicedisplay extends Activity {
             messageButton5.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View arg0){
                     RadioButton rd;
-                    rg.clearCheck();
                     rd = new RadioButton(Practicedisplay.this);
                     aq = new AnswerQuestion();
+                    int a = rg.getCheckedRadioButtonId();
                     if (rg.getCheckedRadioButtonId() != -1){
                         rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
-                    }
-
-                    if(!rd.equals(null))
                         aq.answer = rd.getText().toString();
+                    }
                     else
                         aq.answer = "";
                     aq.id = ques[i-1].id;
@@ -92,10 +90,11 @@ public class Practicedisplay extends Activity {
                         rb1.setText(ques[i].opt[1]);
                         rb2.setText(ques[i].opt[2]);
                         rb3.setText(ques[i].opt[3]);
+
+                        rg.clearCheck();
                     }
                     else {
                         Toast.makeText(Practicedisplay.this,"Test is complete.",Toast.LENGTH_SHORT).show();
-                        //TODO get result for test
                         JSONArray jsonArray = new JSONArray();
                         for (int i = 0; i < answerQuestionArrayList.size(); i++)
                             jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
@@ -253,7 +252,7 @@ public class Practicedisplay extends Activity {
                 //    marks = "something wrong";
                 Log.d("marks", marks);
                 // Decoding the json data
-
+                marks = getMarkJsonDecode(marks);
 
             } catch (ClientProtocolException e) {
                 Error = e.getMessage();
@@ -275,6 +274,22 @@ public class Practicedisplay extends Activity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private String getMarkJsonDecode(String m) {
+        JSONObject j = new JSONObject();
+        try {
+             j =  new JSONObject(m);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (!j.equals(null))
+            try {
+                return j.get("Marks").toString();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        return "Error";
     }
 
 }

@@ -26,30 +26,34 @@
             <RadioButton
                 android:id="@+id/radio0"
                 android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/radio1"
                 android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/radio2"
                 android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/radio3"
                 android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content" />
         </RadioGroup>
 
         <Button
             android:id="@+id/btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_gravity="end"
+            android:layout_gravity="center"
             android:text="@string/button1" />
 
     </LinearLayout>

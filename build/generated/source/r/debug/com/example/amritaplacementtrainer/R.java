@@ -28,8 +28,8 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f090029;
-        public static final int action_settings=0x7f090033;
-        public static final int antynoms=0x7f090030;
+        public static final int action_settings=0x7f090032;
+        public static final int antynoms=0x7f09002f;
         public static final int apti=0x7f090016;
         public static final int btn=0x7f090021;
         public static final int button10=0x7f09000a;
@@ -43,7 +43,7 @@ public final class R {
         public static final int button7=0x7f090000;
         public static final int button8=0x7f090006;
         public static final int button9=0x7f090008;
-        public static final int buttonGoHome=0x7f09002f;
+        public static final int buttonGoHome=0x7f09002e;
         public static final int editPassword=0x7f090012;
         public static final int editUsername=0x7f090011;
         public static final int emailaddress=0x7f090022;
@@ -76,9 +76,8 @@ public final class R {
         public static final int textViewMark=0x7f09002d;
         public static final int tv=0x7f09001b;
         public static final int verbal=0x7f090015;
-        public static final int verbalmain=0x7f090031;
-        public static final int verbalp=0x7f090032;
-        public static final int webView=0x7f09002e;
+        public static final int verbalmain=0x7f090030;
+        public static final int verbalp=0x7f090031;
     }
     public static final class layout {
         public static final int activity_aptimain=0x7f030000;

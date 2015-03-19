@@ -54,7 +54,7 @@
             android:background="#ffffff"
             android:ems="10"
             android:hint="@string/g2"
-            android:text="@string/g1" />
+            android:text="" />
 
     </TableRow>
 
@@ -75,10 +75,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/i1"
             android:background="#ffffff"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="@string/i1" />
+            android:text="" />
 
     </TableRow>
 
@@ -101,10 +102,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/j1"
             android:background="#ffffff"
             android:ems="10"
             android:inputType="phone"
-            android:text="@string/j1" />
+            android:text="" />
 
     </TableRow>
 
@@ -129,7 +131,7 @@
             android:background="#ffffff"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="@string/l1" />
+            android:hint="@string/l1" />
 
     </TableRow>
 

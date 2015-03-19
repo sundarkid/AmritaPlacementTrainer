@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,6 +19,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +36,7 @@ public class LoginActivity extends Activity {
 	}
 
     EditText name,password;
-    String Content;
+    String Content,result,uid;
 
 	private void setupmessagebutton()
 	{
@@ -44,16 +47,18 @@ public class LoginActivity extends Activity {
 			public void onClick(View arg0){
 
 
-        //        new LongOperation().execute("http://amritaplacementtrainer.comlu.com/login.php");
+                new LongOperation().execute("http://amritaplacementtrainer.comlu.com/login.php");
 
-				startActivity(new Intent(LoginActivity.this, Loginsuccess.class));
+
 			}
 			});
 			
 		TextView x = (TextView)	findViewById(R.id.forgotpassword);
 		x.setOnClickListener(new View.OnClickListener(){
 			public void onClick(View v){
-				startActivity(new Intent(LoginActivity.this,ForgotPassword.class));
+
+                startActivity(new Intent(LoginActivity.this, ForgotPassword.class));
+                finish();
 			}
 			
 		
@@ -71,7 +76,7 @@ public class LoginActivity extends Activity {
             try {
                 HttpPost httpPost = new HttpPost(params[0]);
                 List<NameValuePair> postData = new ArrayList<NameValuePair>(2);
-                postData.add(new BasicNameValuePair("name", name.getText().toString()));
+                postData.add(new BasicNameValuePair("regno", name.getText().toString()));
                 postData.add(new BasicNameValuePair("pass",password.getText().toString()));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
@@ -91,13 +96,30 @@ public class LoginActivity extends Activity {
         }
 
         protected void onPostExecute(Void aVoid) {
-            jsonDecode();
+            jsonDecode(Content);
             dialog.dismiss();
+            if(result.equals("Success")) {
+                startActivity(new Intent(LoginActivity.this, Loginsuccess.class));
+                finish();
+            }else {
+                Toast.makeText(LoginActivity.this,"Something went wrong please try again.",Toast.LENGTH_SHORT).show();
+                name.setText("");
+                password.setText("");
+                name.requestFocus();
+            }
         }
     }
 
-    private void jsonDecode() {
-        //TODO decode the data
+    private void jsonDecode(String content) {
+        try {
+            JSONObject object = new JSONObject(content);
+            result = object.get("result").toString();
+            uid = object.get("uniq_id").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

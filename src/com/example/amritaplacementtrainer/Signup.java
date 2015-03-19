@@ -58,7 +58,11 @@ public class Signup extends Activity {
 	{
 	messageButton3.setOnClickListener(new View.OnClickListener(){
 		public void onClick(View arg0){
-            new LongOperation().execute("http://amritaplacementtrainer.comlu.com/signup.php");
+            if(!(register.getText().toString().equals("") || name.getText().toString().equals("") ||
+                    email.getText().toString().equals("") || phone.getText().toString().equals("") || pass.getText().toString().equals("")))
+                new LongOperation().execute("http://amritaplacementtrainer.comlu.com/signup.php");
+            else
+                Toast.makeText(Signup.this,"Please enter all the details", Toast.LENGTH_LONG).show();
 		}
 
 	});
@@ -121,6 +125,7 @@ public class Signup extends Activity {
             Dialog.dismiss();
             jsonDecode();
             startActivity(new Intent(Signup.this, Signupsuccess.class));
+            finish();
         }
 
     }
@@ -129,7 +134,7 @@ public class Signup extends Activity {
 
         try {
             JSONObject object = new JSONObject(Content);
-            Toast.makeText(this,object.getString("result"),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,object.get("result").toString(),Toast.LENGTH_SHORT).show();
         } catch (JSONException e) {
             e.printStackTrace();
         }
