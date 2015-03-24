@@ -81,7 +81,6 @@ public class Practicedisplay extends Activity {
                     RadioButton rd;
                     rd = new RadioButton(Practicedisplay.this);
                     aq = new AnswerQuestion();
-                    int a = rg.getCheckedRadioButtonId();
                     if (rg.getCheckedRadioButtonId() != -1){
                         rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
                         aq.answer = rd.getText().toString();

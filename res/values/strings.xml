@@ -20,9 +20,9 @@
     <string name="j">Phone Number</string>
     <string name="k">User name</string>
     <string name="l">Password</string>
-    <string name="g1"></string>
     <string name="g2">Student</string>
-    <string name="h1"></string>
+    <string name="g1">People Logged in</string>
+    <string name="h1">Logout</string>
     <string name="h2">CB.EN.U4CSE13163</string>
     <string name="i1">student@mail.com</string>
     <string name="j1">987654321</string>
