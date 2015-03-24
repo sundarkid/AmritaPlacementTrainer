@@ -4,6 +4,7 @@ package com.example.amritaplacementtrainer;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -40,13 +41,16 @@ public class Practicedisplay extends Activity {
 	RadioButton rb0,rb1,rb2,rb3;
     Question ques[];
     AnswerQuestion aq;
-    String Content,Subject;
+    String Content,Subject,userId,uniqueId;
     ArrayList<AnswerQuestion> answerQuestionArrayList;
     HttpResponse httpResponse;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_practicedisplay);
+        SharedPreferences loginDetails = getSharedPreferences(MainActivity.fileName,0);
+        userId = loginDetails.getString("user_id","");
+        uniqueId = loginDetails.getString("unique_id","");
         Subject = "";
         Bundle extras = getIntent().getExtras();
         Subject = extras.getString("subject");
@@ -60,7 +64,11 @@ public class Practicedisplay extends Activity {
 
             answerQuestionArrayList = new ArrayList<AnswerQuestion>();
 
-	    new LongOperation().execute("http://amritaplacementtrainer.comlu.com/questions.php");
+        if (userId == "" || uniqueId == ""){
+            Toast.makeText(Practicedisplay.this,"Something went wrong please and try logging in again.",Toast.LENGTH_LONG).show();
+            finish();
+        }else
+	        new QuestionGetOperation().execute("http://amritaplacementtrainer.comlu.com/questions.php");
 
 	        setupmessagebutton();
 	    }
@@ -108,7 +116,7 @@ public class Practicedisplay extends Activity {
 
 
     // Class with extends AsyncTask class
-    private class LongOperation  extends AsyncTask<String, Void, Void> {
+    private class QuestionGetOperation extends AsyncTask<String, Void, Void> {
 
         private final HttpClient Client = new DefaultHttpClient();
         private String Error = null;
@@ -131,8 +139,10 @@ public class Practicedisplay extends Activity {
 
                 // Server url call by Post method
                 HttpPost httpPost = new HttpPost(urls[0]);
-                List<NameValuePair> postData = new ArrayList<NameValuePair>(1);
+                List<NameValuePair> postData = new ArrayList<NameValuePair>(3);
                 postData.add(new BasicNameValuePair("subject",Subject));
+                postData.add(new BasicNameValuePair("user_id",userId));
+                postData.add(new BasicNameValuePair("unique_id",uniqueId));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
                 Content = EntityUtils.toString(response.getEntity());

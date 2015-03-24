@@ -45,7 +45,7 @@
     <string name="title_activity_aptiprac">Aptiprac</string>
     <string name="b3">NUMBER SYSTEM</string>
     <string name="b4">RATIOS</string>
-    <string name="b5">PROFIT_LOSS</string>
+    <string name="b5">PROFIT_ LOSS</string>
     <string name="b6">PIPES</string>
     <string name="b7">TRAIN</string>
     <string name="b8">PROBABILITY</string>
@@ -77,9 +77,9 @@
     <string name="c8">Algorithms</string>
     <string name="c9">SYNONYMS</string>
     <string name="c10">ANTONYMS</string>
-    <string name="c11">SYLLOGISMS</string>
+    <string name="c11">SYLLOGISM</string>
     <string name="c12">READING COMPREHENSION</string>
-    <string name="c13">ERROR SPOTTING</string>
+    <string name="c13">ERROR SPOTING</string>
     <string name="c15">ACTIVE VOICE,PASSIVE VOICE</string>
     <string name="c14">IDIOMS AND PRRASES</string>
     <string name="c17">IDIOMS AND PHRASES</string>

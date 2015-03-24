@@ -1,6 +1,7 @@
 package com.example.amritaplacementtrainer;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends Activity {
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +102,11 @@ public class LoginActivity extends Activity {
             jsonDecode(Content);
             dialog.dismiss();
             if(result.equals("Success")) {
+                SharedPreferences loginDetails = getSharedPreferences(MainActivity.fileName,0);
+                SharedPreferences.Editor editor = loginDetails.edit();
+                editor.putString("user_id",name.getText().toString());
+                editor.putString("unique_id",uid);
+                editor.commit();
                 startActivity(new Intent(LoginActivity.this, Loginsuccess.class));
                 finish();
             }else {
