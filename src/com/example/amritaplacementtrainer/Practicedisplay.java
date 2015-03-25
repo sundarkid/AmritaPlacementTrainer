@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -35,12 +36,15 @@ import java.util.List;
 
 public class Practicedisplay extends Activity {
 	int i = 1;
-	TextView tv1;
+	TextView textViewQuestion,textViewTimer;
 	Button btnNext;
 	RadioGroup rg;
 	RadioButton rb0,rb1,rb2,rb3;
     Question ques[];
     AnswerQuestion aq;
+    int sec,min,hrs;
+    Handler timeHandler;
+    Runnable timeRunnable;
     String Content,Subject,userId,uniqueId;
     ArrayList<AnswerQuestion> answerQuestionArrayList;
     HttpResponse httpResponse;
@@ -48,13 +52,17 @@ public class Practicedisplay extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_practicedisplay);
+
+
         SharedPreferences loginDetails = getSharedPreferences(MainActivity.fileName,0);
         userId = loginDetails.getString("user_id","");
         uniqueId = loginDetails.getString("unique_id","");
         Subject = "";
         Bundle extras = getIntent().getExtras();
         Subject = extras.getString("subject");
-		 tv1=(TextView)findViewById(R.id.tv);
+		 textViewQuestion =(TextView)findViewById(R.id.tv);
+         textViewTimer = (TextView) findViewById(R.id.textViewTimer);
+        startTimer();
 	        btnNext=(Button)findViewById(R.id.btn);
 	        rg=(RadioGroup)findViewById(R.id.radioGroup1);
 	        rb0=(RadioButton)findViewById(R.id.radio0);
@@ -64,7 +72,7 @@ public class Practicedisplay extends Activity {
 
             answerQuestionArrayList = new ArrayList<AnswerQuestion>();
 
-        if (userId == "" || uniqueId == ""){
+        if (userId.equals("") || uniqueId.equals("")){
             Toast.makeText(Practicedisplay.this,"Something went wrong please and try logging in again.",Toast.LENGTH_LONG).show();
             finish();
         }else
@@ -72,8 +80,44 @@ public class Practicedisplay extends Activity {
 
 	        setupmessagebutton();
 	    }
-	        
-        private void setupmessagebutton()
+
+    private void startTimer() {
+        sec = 0;
+        min = 20;
+        hrs = 0;
+        timeRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (sec == 0 && min == 0 && hrs != 0) {
+                    hrs -= 1;
+                    min = 59;
+                    sec = 60;
+                } else if (sec == 0) {
+                    sec = 60;
+                    min -= 1;
+                }
+                sec--;
+                if (min >= 0 && sec >= 0) {
+                    textViewTimer.setText("" + hrs + ":" + min + ":" + sec);
+                    timeHandler.postDelayed(timeRunnable, 1000);
+                    if (hrs == 0 && min == 0 && sec < 10) {
+                        textViewTimer.setText("" + hrs + ":" + min + ":" + sec);
+                        textViewTimer.setTextColor(getResources().getColor(R.color.limit));
+                        textViewTimer.setTextSize(40);
+                    }
+                }
+                if (min == 0 && sec == 0 && hrs == 0) {
+                    onBackPressed();
+                }
+
+            }
+        };
+        timeHandler = new android.os.Handler();
+
+        timeHandler.post(timeRunnable);
+    }
+
+    private void setupmessagebutton()
         {
             Button messageButton5=(Button)findViewById(R.id.btn);
             messageButton5.setOnClickListener(new View.OnClickListener(){
@@ -92,7 +136,7 @@ public class Practicedisplay extends Activity {
                     if(i < ques.length)
                     {
 
-                        tv1.setText(ques[i].que);
+                        textViewQuestion.setText(ques[i].que);
                         rb0.setText(ques[i].opt[0]);
                         rb1.setText(ques[i].opt[1]);
                         rb2.setText(ques[i].opt[2]);
@@ -166,7 +210,7 @@ public class Practicedisplay extends Activity {
             // Close progress dialog
             Dialog.dismiss();
             // Setting the first question
-            tv1.setText(ques[0].que);
+            textViewQuestion.setText(ques[0].que);
             rb0.setText(ques[0].opt[0]);
             rb1.setText(ques[0].opt[1]);
             rb2.setText(ques[0].opt[2]);
@@ -228,6 +272,12 @@ public class Practicedisplay extends Activity {
         }
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        timeHandler.removeCallbacks(timeRunnable);
+        super.onDestroy();
     }
 
     private class sendDataToServer extends AsyncTask<String,Void,Void>{

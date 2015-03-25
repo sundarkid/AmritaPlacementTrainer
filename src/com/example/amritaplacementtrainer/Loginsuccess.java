@@ -112,10 +112,11 @@ public class Loginsuccess extends Activity {
         @Override
         protected void onPostExecute(Void aVoid) {
             jsonDecode(Content);
-            if (result == "success")
+            if (result.equalsIgnoreCase("success"))
                 finish();
             else
                 Toast.makeText(Loginsuccess.this,"Something went wrong try again",Toast.LENGTH_LONG).show();
+            dialog.dismiss();
             super.onPostExecute(aVoid);
         }
     }
