@@ -76,14 +76,14 @@ public class Practicedisplay extends Activity {
             Toast.makeText(Practicedisplay.this,"Something went wrong please and try logging in again.",Toast.LENGTH_LONG).show();
             finish();
         }else
-	        new QuestionGetOperation().execute("http://amritaplacementtrainer.comlu.com/questions.php");
+	        new QuestionGetOperation().execute("http://amritaplacements.co.in/questions.php");
 
 	        setupmessagebutton();
 	    }
 
     private void startTimer() {
-        sec = 0;
-        min = 20;
+        sec = 10;
+        min = 0;
         hrs = 0;
         timeRunnable = new Runnable() {
             @Override
@@ -107,7 +107,10 @@ public class Practicedisplay extends Activity {
                     }
                 }
                 if (min == 0 && sec == 0 && hrs == 0) {
-                    onBackPressed();
+                    JSONArray jsonArray = new JSONArray();
+                    for (int i = 0; i < answerQuestionArrayList.size(); i++)
+                        jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
+                    new sendDataToServer().execute("http://amritaplacements.co.in/marks.php",jsonArray.toString());
                 }
 
             }
@@ -149,7 +152,7 @@ public class Practicedisplay extends Activity {
                         JSONArray jsonArray = new JSONArray();
                         for (int i = 0; i < answerQuestionArrayList.size(); i++)
                             jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
-                        new sendDataToServer().execute("http://amritaplacementtrainer.comlu.com/marks.php",jsonArray.toString());
+                        new sendDataToServer().execute("http://amritaplacements.co.in/marks.php",jsonArray.toString());
                     }
 
                     i++;

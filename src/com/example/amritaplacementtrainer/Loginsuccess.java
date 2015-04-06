@@ -112,8 +112,11 @@ public class Loginsuccess extends Activity {
         @Override
         protected void onPostExecute(Void aVoid) {
             jsonDecode(Content);
-            if (result.equalsIgnoreCase("success"))
-                finish();
+            if (result.equalsIgnoreCase("success")){
+                SharedPreferences preferences = getSharedPreferences(MainActivity.fileName,0);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                finish();}
             else
                 Toast.makeText(Loginsuccess.this,"Something went wrong try again",Toast.LENGTH_LONG).show();
             dialog.dismiss();

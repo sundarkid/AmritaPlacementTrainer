@@ -49,8 +49,10 @@ public class LoginActivity extends Activity {
 		messageButton2.setOnClickListener(new View.OnClickListener(){
 			public void onClick(View arg0){
 
-
-                new LongOperation().execute("http://amritaplacementtrainer.comlu.com/login.php");
+                if(name.getText().toString().equals("") || password.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(),"Please enter the details.",Toast.LENGTH_LONG).show();
+                }else
+                    new LongOperation().execute("http://amritaplacements.co.in/login.php");
 
 
 			}
