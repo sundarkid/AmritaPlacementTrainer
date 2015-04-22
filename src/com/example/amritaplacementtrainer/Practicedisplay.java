@@ -62,7 +62,6 @@ public class Practicedisplay extends Activity {
         Subject = extras.getString("subject");
 		 textViewQuestion =(TextView)findViewById(R.id.tv);
          textViewTimer = (TextView) findViewById(R.id.textViewTimer);
-        startTimer();
 	        btnNext=(Button)findViewById(R.id.btn);
 	        rg=(RadioGroup)findViewById(R.id.radioGroup1);
 	        rb0=(RadioButton)findViewById(R.id.radio0);
@@ -76,14 +75,14 @@ public class Practicedisplay extends Activity {
             Toast.makeText(Practicedisplay.this,"Something went wrong please and try logging in again.",Toast.LENGTH_LONG).show();
             finish();
         }else
-	        new QuestionGetOperation().execute("http://amritaplacements.co.in/questions.php");
+	        new QuestionGetOperation().execute("http://amritaplacements.co.in/questionsWithLevels.php");
 
 	        setupmessagebutton();
 	    }
 
     private void startTimer() {
-        sec = 10;
-        min = 0;
+        sec = 0;
+        min = 10;
         hrs = 0;
         timeRunnable = new Runnable() {
             @Override
@@ -116,8 +115,8 @@ public class Practicedisplay extends Activity {
             }
         };
         timeHandler = new android.os.Handler();
-
         timeHandler.post(timeRunnable);
+
     }
 
     private void setupmessagebutton()
@@ -212,6 +211,8 @@ public class Practicedisplay extends Activity {
             jsonDecode();
             // Close progress dialog
             Dialog.dismiss();
+            // Start the timer
+            startTimer();
             // Setting the first question
             textViewQuestion.setText(ques[0].que);
             rb0.setText(ques[0].opt[0]);
