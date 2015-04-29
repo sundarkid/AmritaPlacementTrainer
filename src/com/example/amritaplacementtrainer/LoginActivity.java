@@ -39,7 +39,7 @@ public class LoginActivity extends Activity {
 	}
 
     EditText name,password;
-    String Content,result,uid;
+    String Content,result,uid,no_users,no;
 
 	private void setupmessagebutton()
 	{
@@ -82,10 +82,13 @@ public class LoginActivity extends Activity {
                 HttpPost httpPost = new HttpPost(params[0]);
                 List<NameValuePair> postData = new ArrayList<NameValuePair>(2);
                 postData.add(new BasicNameValuePair("regno", name.getText().toString()));
-                postData.add(new BasicNameValuePair("pass",password.getText().toString()));
+                postData.add(new BasicNameValuePair("pass", password.getText().toString()));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
                 Content = EntityUtils.toString(response.getEntity());
+                httpPost = new HttpPost("http://amritaplacements.co.in/count.php");
+                response = Client.execute(httpPost);
+                no_users = EntityUtils.toString(response.getEntity());
             }catch (IOException e){
 
             }
@@ -102,12 +105,14 @@ public class LoginActivity extends Activity {
 
         protected void onPostExecute(Void aVoid) {
             jsonDecode(Content);
+            jsonDecodeUsers(no_users);
             dialog.dismiss();
             if(result.equals("Success")) {
                 SharedPreferences loginDetails = getSharedPreferences(MainActivity.fileName,0);
                 SharedPreferences.Editor editor = loginDetails.edit();
                 editor.putString("user_id",name.getText().toString());
                 editor.putString("unique_id",uid);
+                editor.putString("no_users",no);
                 editor.commit();
                 startActivity(new Intent(LoginActivity.this, Loginsuccess.class));
                 finish();
@@ -128,8 +133,15 @@ public class LoginActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
+    private void jsonDecodeUsers(String c) {
+        try{
+            JSONObject object = new JSONObject(c);
+            no = object.get("result").toString();
+        }catch (JSONException e){
 
+        }
     }
 
 

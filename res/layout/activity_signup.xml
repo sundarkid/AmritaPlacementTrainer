@@ -29,7 +29,7 @@
             android:background="#ffffff"
             android:ems="10"
             android:hint="@string/h2"
-            android:text="@string/h1" />
+            android:text="" />
 
 
     </TableRow>

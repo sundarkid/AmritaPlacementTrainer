@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -29,7 +30,8 @@ import java.util.List;
 public class Loginsuccess extends Activity {
 
     Button logOut;
-    String user,uniqueId,Content,result;
+    TextView noOfUsers;
+    String user,uniqueId,Content,result,no_users;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,9 @@ public class Loginsuccess extends Activity {
         SharedPreferences preferences = getSharedPreferences(MainActivity.fileName,0);
         user = preferences.getString("user_id","");
         uniqueId = preferences.getString("unique_id","");
-
+        no_users = preferences.getString("no_users","");
+        noOfUsers = (TextView) findViewById(R.id.textViewLoggedInNo);
+        noOfUsers.setText(no_users);
 			Button messageButton0=(Button)findViewById(R.id.apti);
 		messageButton0.setOnClickListener(new View.OnClickListener(){
 			public void onClick(View arg0){
@@ -73,7 +77,9 @@ public class Loginsuccess extends Activity {
             @Override
             public void onClick(View v) {
                 if(user != "" && uniqueId != "")
-                    new SignOutOperation().execute("http://amritaplacementtrainer.comlu.com/signout.php");
+                    new SignOutOperation().execute("http://amritaplacements.co.in/signout.php");
+                else
+                    Toast.makeText(Loginsuccess.this,"No valid login information, Please login again",Toast.LENGTH_LONG).show();
             }
         });
 	
@@ -91,10 +97,11 @@ public class Loginsuccess extends Activity {
                 HttpPost httpPost = new HttpPost(params[0]);
                 List<NameValuePair> postData = new ArrayList<NameValuePair>(2);
                 postData.add(new BasicNameValuePair("user_id", user));
-                postData.add(new BasicNameValuePair("unique_id",uniqueId));
+                postData.add(new BasicNameValuePair("unique_id", uniqueId));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
                 Content = EntityUtils.toString(response.getEntity());
+
             }catch (IOException e){
 
             }
@@ -123,6 +130,8 @@ public class Loginsuccess extends Activity {
             super.onPostExecute(aVoid);
         }
     }
+
+
 
     void jsonDecode(String c){
         try{

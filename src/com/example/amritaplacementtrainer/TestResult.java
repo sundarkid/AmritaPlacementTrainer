@@ -15,19 +15,29 @@ import org.apache.http.protocol.HTTP;
 
 public class TestResult extends Activity {
 
-    String mark;
+    String mark,Subject;
     TextView marks;
-    Button goHome;
+    Button goHome,references;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_result);
         Bundle extras = getIntent().getExtras();
         mark = extras.getString("mark");
-
+        Subject = extras.getString("subject","");
         marks = (TextView) findViewById(R.id.textViewMark);
         marks.setText(mark);
         goHome = (Button) findViewById(R.id.buttonGoHome);
+        references = (Button) findViewById(R.id.buttonReferences);
+
+        references.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestResult.this,ReferencesList.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override

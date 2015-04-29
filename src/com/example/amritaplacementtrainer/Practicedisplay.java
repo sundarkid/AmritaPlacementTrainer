@@ -109,7 +109,7 @@ public class Practicedisplay extends Activity {
                     JSONArray jsonArray = new JSONArray();
                     for (int i = 0; i < answerQuestionArrayList.size(); i++)
                         jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
-                    new sendDataToServer().execute("http://amritaplacements.co.in/marks.php",jsonArray.toString());
+                    new sendDataToServer().execute("http://amritaplacements.co.in/marks.php",jsonArray.toString(),uniqueId);
                 }
 
             }
@@ -151,7 +151,8 @@ public class Practicedisplay extends Activity {
                         JSONArray jsonArray = new JSONArray();
                         for (int i = 0; i < answerQuestionArrayList.size(); i++)
                             jsonArray.put(answerQuestionArrayList.get(i).getJsonObject());
-                        new sendDataToServer().execute("http://amritaplacements.co.in/marks.php",jsonArray.toString());
+                        new sendDataToServer().execute("http://amritaplacements.co.in/marks.php",jsonArray.toString(),uniqueId,userId);
+                        timeHandler.removeCallbacks(timeRunnable);
                     }
 
                     i++;
@@ -188,6 +189,7 @@ public class Practicedisplay extends Activity {
                 postData.add(new BasicNameValuePair("subject",Subject));
                 postData.add(new BasicNameValuePair("user_id",userId));
                 postData.add(new BasicNameValuePair("unique_id",uniqueId));
+                postData.add(new BasicNameValuePair("regno",userId));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
                 Content = EntityUtils.toString(response.getEntity());
@@ -305,8 +307,10 @@ public class Practicedisplay extends Activity {
 
                 // Server url call by Post method
                 HttpPost httpPost = new HttpPost(params[0]);
-                List<NameValuePair> postData = new ArrayList<NameValuePair>(1);
+                List<NameValuePair> postData = new ArrayList<NameValuePair>(2);
                 postData.add(new BasicNameValuePair("answers",params[1]));
+                postData.add(new BasicNameValuePair("uid",params[2]));
+                postData.add(new BasicNameValuePair("regno",params[3]));
                 httpPost.setEntity(new UrlEncodedFormEntity(postData));
                 HttpResponse response = Client.execute(httpPost);
                 httpResponse = response;
@@ -334,6 +338,7 @@ public class Practicedisplay extends Activity {
            // marks = "<html>" + marks +"</html>";
             Object o = httpResponse;
             intent.putExtra("mark",marks);
+            intent.putExtra("subject",Subject);
             startActivity(intent);
             finish();
         }

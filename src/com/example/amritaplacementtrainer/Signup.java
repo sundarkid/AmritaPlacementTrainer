@@ -60,7 +60,7 @@ public class Signup extends Activity {
 		public void onClick(View arg0){
             if(!(register.getText().toString().equals("") || name.getText().toString().equals("") ||
                     email.getText().toString().equals("") || phone.getText().toString().equals("") || pass.getText().toString().equals("")))
-                new LongOperation().execute("http://amritaplacements.co.in/signup.php");
+                new LongOperation().execute("http://amritaplacementtrainer.comlu.com/signup.php");
             else
                 Toast.makeText(Signup.this,"Please enter all the details", Toast.LENGTH_LONG).show();
 		}

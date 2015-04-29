@@ -112,5 +112,7 @@
     <string name="title_activity_practicedisplay">Practicedisplay</string>
     <string name="button1">Next</string>
     <string name="title_activity_test_result">TestResult</string>
+    <string name="title_activity_references_list">ReferencesList</string>
+    <string name="title_activity_file">FileActivity</string>
 
 </resources>

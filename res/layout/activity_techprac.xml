@@ -28,6 +28,26 @@
             android:textColor="#ffffff" />
 
         <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/c5"
+            android:background="#0182B3"
+            android:onClick="clicking"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/c2"
+            android:background="#0182B3"
+            android:onClick="clicking"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"/>
+
+        <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,26 +72,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/c6"
-            android:background="#0182B3"
-            android:onClick="clicking"
-            android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/c5"
-            android:background="#0182B3"
-            android:onClick="clicking"
-            android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/c2"
             android:background="#0182B3"
             android:onClick="clicking"
             android:layout_marginTop="10dp"
